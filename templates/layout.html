@@ -1,3 +1,5 @@
+# s3uploader/templates/layout.html
+
 <!DOCTYPE html>
 <HEAD>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -33,26 +35,16 @@
         <div class="offset-by-one.column" style="margin-top: 25%">
             <img src="{{ url_for('static', filename='images/Proof-Simple_Advertising-K.png') }}" style="max-width:200px;height:auto;border:0;"/>
             <h4>Proof CDN Uploader</h4>
-            <p>Use this form to upload content to Proof's CDN network.</p>
-            <br>
-            <hr>
-            <form method="POST" enctype="multipart/form-data" action="" novalidate>
-                <p>
-                    {{ form.file.label }}<br>
-                    {{ form.file(class="u-full-width")}}
-                </p>
-                <input class="button-primary" type="submit" value="Upload">
-            </form>
+            {% block content %}{% endblock %}
             {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    <ul class=flashes>
-                    {% for message in messages %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
-                    </ul>
-                {% endif %}
+            	{% if messages %}
+            		<ul class=body>
+            			{% for message in messages %}
+            			<li>{{ message }}</li>
+            			{% endfor %}
+            		</ul>
+            	{% endif %}
             {% endwith %}
-            {% block body %}{% endblock %}
         </div>
     </div>
 </div>

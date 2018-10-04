@@ -1,0 +1,5 @@
+#requiements for pip
+
+boto3
+flask
+flask-wtf
